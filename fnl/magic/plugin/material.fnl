@@ -8,5 +8,5 @@
        :borders true
        :high_visibility {:darker true}})
 
-    (set nvim.g.material_style :darker)
+    (set nvim.g.material_style :palenight)
     (nvim.ex.colorscheme :material)))

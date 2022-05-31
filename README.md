@@ -20,6 +20,19 @@ git clone git@github.com:Olical/magic-kit.git ~/.config/nvim
 ~/.config/nvim/script/sync.sh
 ----
 
+You need to compile rust-parinfer
+
+```bash
+cd ~/.local/share/nvim/site/pack/packer/start/parinfer-rust/
+cargo build --release
+```
+
+Also, setup org treesitter parser
+
+```vim
+:TSUpdate org
+```
+
 Once done, have a look at `~/.config/nvim/init.lua` to learn about the bootstrap process then `~/.config/nvim/fnl/magic/init.fnl` for the real beginning of your Fennel based configuration. Good luck! Have fun!
 
 == Mappings

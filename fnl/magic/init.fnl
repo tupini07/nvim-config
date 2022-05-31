@@ -1,6 +1,7 @@
 (module magic.init
   {autoload {plugin magic.plugin
-             nvim aniseed.nvim}})
+             nvim aniseed.nvim
+             wk   which-key}})
 
 ;;; Introduction
 
@@ -27,12 +28,11 @@
 (nvim.ex.set :spell)
 (nvim.ex.set :list)
 
-
 ;;; Mappings
 
 (set nvim.g.mapleader " ")
 (set nvim.g.maplocalleader ",")
-
+(set nvim.g.rainbow_active 1)
 
 ;;; Plugins
 
@@ -57,6 +57,7 @@
   :mbbill/undotree {:mod :undotree}
   :neovim/nvim-lspconfig {:mod :lspconfig}
   :nvim-lualine/lualine.nvim {:mod :lualine}
+  :ahmedkhalf/project.nvim {:mod :project-nvim}
   :nvim-telescope/telescope.nvim {:mod :telescope :requires [[:nvim-lua/popup.nvim] [:nvim-lua/plenary.nvim]]}
   :radenling/vim-dispatch-neovim {}
   :tami5/compe-conjure {}
@@ -74,4 +75,15 @@
   :w0rp/ale {:mod :ale}
   :wbthomason/packer.nvim {}
   :janet-lang/janet.vim {}
-  )
+  :eraserhd/parinfer-rust {}
+  :luochen1990/rainbow {}
+  :nvim-treesitter/nvim-treesitter {}
+  :nvim-orgmode/orgmode {:mod :orgmode}
+  :kyazdani42/nvim-web-devicons {}
+  :kyazdani42/nvim-tree.lua { :mod :nvim-tree})
+
+;;; Common config
+(wk.register { :c { :name "Configuration"
+                    :i ["<cmd>e ~/.config/nvim/fnl/magic/init.fnl <cr><cmd>cd ~/.config/nvim/ <cr>"
+                        "Edit init"]}}
+             { :prefix "<leader>"})

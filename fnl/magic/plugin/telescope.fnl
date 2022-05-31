@@ -1,6 +1,7 @@
 (module magic.plugin.telescope
   {autoload {nvim aniseed.nvim
-             util magic.util}})
+             util magic.util
+             wk   which-key}})
 
 (let [(ok? telescope) (pcall #(require :telescope))]
   (when ok?
@@ -11,8 +12,16 @@
                             "--smart-case" "--hidden" "--follow"
                             "-g" "!.git/"]}})
 
-    (util.lnnoremap :ff "Telescope find_files hidden=true")
+    (telescope.load_extension :projects)
+
+    (wk.register { :f { :name "Folds/Files"}} 
+                 { :prefix "<leader>"})
+      
+
+    (util.lnnoremap :fF "Telescope find_files hidden=true")
+    (util.lnnoremap :ff "Telescope find_files hidden=false")
     (util.lnnoremap :f- "Telescope file_browser")
+    (util.lnnoremap :fp "Telescope projects")
     (util.lnnoremap :fg "Telescope live_grep")
     (util.lnnoremap :* "Telescope grep_string")
     (util.lnnoremap :fb "Telescope buffers")
