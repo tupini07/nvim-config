@@ -73,4 +73,5 @@
   :tpope/vim-vinegar {}
   :w0rp/ale {:mod :ale}
   :wbthomason/packer.nvim {}
+  :janet-lang/janet.vim {}
   )
