@@ -16,8 +16,8 @@
 
     (wk.register { :f { :name "Folds/Files"}} 
                  { :prefix "<leader>"})
-      
 
+    (util.lnnoremap :fs "w")
     (util.lnnoremap :fF "Telescope find_files hidden=true")
     (util.lnnoremap :ff "Telescope find_files hidden=false")
     (util.lnnoremap :f- "Telescope file_browser")
@@ -34,9 +34,9 @@
     (util.lnnoremap :fC "Telescope command_history")
     (util.lnnoremap :fq "Telescope quickfix")
     (util.lnnoremap :fl "Telescope loclist")
-    (util.lnnoremap :fsa "Telescope lsp_code_actions")
-    (util.lnnoremap :fsi "Telescope lsp_implementations")
-    (util.lnnoremap :fsr "Telescope lsp_references")
-    (util.lnnoremap :fsS "Telescope lsp_document_symbols")
-    (util.lnnoremap :fss "Telescope lsp_workspace_symbols")))
+    (util.lnnoremap :fua "Telescope lsp_code_actions")
+    (util.lnnoremap :fui "Telescope lsp_implementations")
+    (util.lnnoremap :fur "Telescope lsp_references")
+    (util.lnnoremap :fuS "Telescope lsp_document_symbols")
+    (util.lnnoremap :fus "Telescope lsp_workspace_symbols")))
 

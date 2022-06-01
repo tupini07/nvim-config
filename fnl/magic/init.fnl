@@ -1,7 +1,8 @@
 (module magic.init
   {autoload {plugin magic.plugin
-             nvim aniseed.nvim
-             wk   which-key}})
+             nvim   aniseed.nvim
+             wk     which-key}
+   require-macros [magic.macros]})
 
 ;;; Introduction
 
@@ -50,7 +51,6 @@
   :ggandor/lightspeed.nvim {}
   :guns/vim-sexp {:mod :sexp}
   :hrsh7th/nvim-compe {:mod :compe}
-  :jiangmiao/auto-pairs {:mod :auto-pairs}
   :lewis6991/impatient.nvim {}
   :liuchengxu/vim-better-default {:mod :better-default}
   :marko-cerovac/material.nvim {:mod :material}
@@ -80,10 +80,36 @@
   :nvim-treesitter/nvim-treesitter {}
   :nvim-orgmode/orgmode {:mod :orgmode}
   :kyazdani42/nvim-web-devicons {}
-  :kyazdani42/nvim-tree.lua { :mod :nvim-tree})
+  :kyazdani42/nvim-tree.lua { :mod :nvim-tree}
+  :folke/trouble.nvim {:config (fn [] (let [trouble (require :trouble)] 
+                                        (trouble.setup)))}
+  :folke/todo-comments.nvim {:requires [[:nvim-lua/plenary.nvim]]
+                             :config (fn []
+                                       (let [todo-comments (require :todo-comments)]
+                                         (todo-comments.setup)))})
 
 ;;; Common config
+
+;; TODO: separate the below into different files?
+;;; Keymaps
+;; easier command line mode
+(wk.register {";" [":" "vim-ex"]})
+
+(wk.register {:t { :name "Tabs"
+                   :c ["<cmd>tabnew<cr>" "Create tab"]
+                   :n ["<cmd>tabnext<cr>" "Next tab"]
+                   :p ["<cmd>tabNext<cr>" "Previous tab"]
+                   :q ["<cmd>tabclose<cr>" "Close current tab"]}}
+             { :prefix "<leader>"})
+
+(wk.register {:jk ["<esc>" "Exit to normal mode"]} {:mode :i})
+
 (wk.register { :c { :name "Configuration"
                     :i ["<cmd>e ~/.config/nvim/fnl/magic/init.fnl <cr><cmd>cd ~/.config/nvim/ <cr>"
                         "Edit init"]}}
              { :prefix "<leader>"})
+
+;;; Some custom commands
+(command! Scratch "new | setlocal bt=nofile bh=wipe nobl noswapfile")
+(command! SetScratch "edit [Scratch] | setlocal bt=nofile bh=wipe nobl noswapfile")
+
