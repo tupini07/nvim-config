@@ -2,9 +2,6 @@
   {autoload {wk   which-key}
    require-macros [magic.macros]})
 
-(defn potato []
-  (print 123))
-
 
 (let [(ok? conjure) (pcall #(require :conjure))]
   (when ok?
