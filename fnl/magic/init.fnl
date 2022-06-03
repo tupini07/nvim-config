@@ -41,7 +41,7 @@
 ;; Packer configuration format: https://github.com/wbthomason/packer.nvim
 (plugin.use
   :Olical/aniseed {}
-  :Olical/conjure {}
+  :Olical/conjure { :mod :conjure}
   :Olical/nvim-local-fennel {}
   :PeterRincker/vim-argumentative {}
   :airblade/vim-gitgutter {}
@@ -95,21 +95,20 @@
 ;; easier command line mode
 (wk.register {";" [":" "vim-ex"]})
 
+(wk.register {:jk ["<esc>" "Exit to normal mode"]} {:mode :i})
+
 (wk.register {:t { :name "Tabs"
                    :c ["<cmd>tabnew<cr>" "Create tab"]
                    :n ["<cmd>tabnext<cr>" "Next tab"]
                    :p ["<cmd>tabNext<cr>" "Previous tab"]
-                   :q ["<cmd>tabclose<cr>" "Close current tab"]}}
-             { :prefix "<leader>"})
-
-(wk.register {:jk ["<esc>" "Exit to normal mode"]} {:mode :i})
-
-(wk.register { :c { :name "Configuration"
-                    :i ["<cmd>e ~/.config/nvim/fnl/magic/init.fnl <cr><cmd>cd ~/.config/nvim/ <cr>"
-                        "Edit init"]}}
+                   :q ["<cmd>tabclose<cr>" "Close current tab"]}
+              :b { :name "Buffers" 
+                   "[" ["<cmd>bprevious<cr>" "Previous buffer"]
+                   "]" ["<cmd>bnext<cr>" "Next buffer"]}}
              { :prefix "<leader>"})
 
 ;;; Some custom commands
 (command! Scratch "new | setlocal bt=nofile bh=wipe nobl noswapfile")
 (command! SetScratch "edit [Scratch] | setlocal bt=nofile bh=wipe nobl noswapfile")
+
 

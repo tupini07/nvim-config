@@ -14,7 +14,9 @@
 
     (telescope.load_extension :projects)
 
-    (wk.register { :f { :name "Folds/Files"}} 
+    (wk.register { :f { :name "Folds/Files"
+                        :i ["<cmd>e ~/.config/nvim/fnl/magic/init.fnl <cr><cmd>cd ~/.config/nvim/ <cr>" 
+                            "Edit init"]}} 
                  { :prefix "<leader>"})
 
     (util.lnnoremap :fs "w")

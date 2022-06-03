@@ -51,20 +51,27 @@
 
 {;; This is just a silly example macro.
  ; (infix-example-macro 2 + 3) => compiles to: (+ 2 3) => evaluates to: 5
- :infix-example-macro
+ :infix-example-macro!
  (fn [x op y]
    `(,op ,x ,y))
 
  ;; Create an augroup for your autocmds.
- ; (augroup my-group
+ ; (augroup! my-group
  ;   (nvim.ex.autocmd ...))
- :augroup
+ :augroup!
  (fn [name ...]
    `(do
       (vim.cmd (.. "augroup " ,(tostring name) "\nautocmd!"))
       ,...
       (vim.cmd "augroup END")
       nil))
+
+ :execute-keys-wk-cmd!
+ (fn execute-keys-wk-cmd! [name keys]
+   (let [cmd (.. "<cmd>normal " keys "<cr>")]
+     [cmd name]))
+   
+
  :command!
  ;; taken from https://github.dev/shaunsingh/nyoom.nvim
  (fn command! [name expr ?desc]
