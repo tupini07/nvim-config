@@ -24,7 +24,7 @@
                 :nvim_lsp true
                 :nvim_lua true
                 :conjure true
-                :vsnip true}}))
+                :vsnip false}}))
 
   (nvim.ex.inoremap "<silent><expr> <C-Space> compe#complete()")
   (nvim.ex.inoremap "<silent><expr> <CR> compe#confirm('<CR>')")
