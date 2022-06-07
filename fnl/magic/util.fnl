@@ -25,3 +25,10 @@
 
 (defn lnnoremap [from to]
   (nnoremap (.. "<leader>" from) to))
+
+(defn lazy-require! [mod]
+  "Load a module when it accessed."
+  (let [meta# {:__index #(. (require mod) $2)}
+        ret# {}]
+    (setmetatable ret# meta#)
+    ret#))

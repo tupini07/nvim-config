@@ -19,10 +19,6 @@ git clone git@github.com:tupini07/nvim-config.git ~/.config/nvim
 # Perform initial sync, which will fetch all the plugins.
 # Run this every time you change the plugin configuration.
 ~/.config/nvim/script/sync.sh
-
-# You need to compile rust-parinfer
-cd ~/.local/share/nvim/site/pack/packer/start/parinfer-rust/
-cargo build --release
 ```
 
 Once that's done, start `nvim` qnormally. You now need to do some followup configuration

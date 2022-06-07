@@ -4,6 +4,7 @@
              wk     which-key}
    require-macros [magic.macros]})
 
+
 ;;; Introduction
 
 ;; Aniseed compiles this (and all other Fennel files under fnl) into the lua
@@ -35,8 +36,6 @@
 (set nvim.g.maplocalleader ",")
 (set nvim.g.rainbow_active 1)
 
-;;; Plugins
-
 ;; Run script/sync.sh to update, install and clean your plugins.
 ;; Packer configuration format: https://github.com/wbthomason/packer.nvim
 (plugin.use
@@ -50,7 +49,17 @@
   :folke/which-key.nvim {:mod :which-key}
   :ggandor/lightspeed.nvim {}
   :guns/vim-sexp {:mod :sexp}
-  :hrsh7th/nvim-compe {:mod :compe}
+
+  :williamboman/nvim-lsp-installer {}
+  :ray-x/lsp_signature.nvim {}
+
+  :hrsh7th/nvim-cmp { :mod :cmp
+                      :requires [:PaterJason/cmp-conjure
+                                 :hrsh7th/cmp-path
+                                 :hrsh7th/cmp-buffer
+                                 :hrsh7th/cmp-cmdline
+                                 :hrsh7th/cmp-nvim-lsp]}
+
   :lewis6991/impatient.nvim {}
   :liuchengxu/vim-better-default {:mod :better-default}
   :marko-cerovac/material.nvim {:mod :material}
@@ -60,7 +69,6 @@
   :ahmedkhalf/project.nvim {:mod :project-nvim}
   :nvim-telescope/telescope.nvim {:mod :telescope :requires [[:nvim-lua/popup.nvim] [:nvim-lua/plenary.nvim]]}
   :radenling/vim-dispatch-neovim {}
-  :tami5/compe-conjure {}
   :tpope/vim-abolish {}
   :tpope/vim-commentary {}
   :tpope/vim-dispatch {}
@@ -75,7 +83,7 @@
   :w0rp/ale {:mod :ale}
   :wbthomason/packer.nvim {}
   :janet-lang/janet.vim {}
-  :eraserhd/parinfer-rust {}
+  :eraserhd/parinfer-rust { :run "cargo build --release"}
   :luochen1990/rainbow {}
   :nvim-treesitter/nvim-treesitter {}
   :nvim-orgmode/orgmode {:mod :orgmode}
@@ -90,7 +98,7 @@
 
 ;;; Common config
 
-;; TODO: separate the below into different files?
+;;;  TODO: separate the below into different files?
 ;;; Keymaps
 ;; easier command line mode
 (wk.register {";" [":" "vim-ex"]})
