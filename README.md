@@ -25,10 +25,10 @@ cd ~/.local/share/nvim/site/pack/packer/start/parinfer-rust/
 cargo build --release
 ```
 
-Once that's done, start `nvim` normally. You now need to do some followup configuration
+Once that's done, start `nvim` qnormally. You now need to do some followup configuration
 
 ```vim
-# setup tree-sitter org mode config
+" setup tree-sitter org mode config
 :TSUpdate org
 ```
 
