@@ -1,6 +1,7 @@
 (module magic.plugin
   {autoload {a aniseed.core
-             packer packer}})
+             packer packer}
+   require {fnl aniseed.fennel}})
 
 (defn- safe-require-plugin-config [name]
   "Safely require a module under the magic.plugin.* prefix. Will catch errors
@@ -26,11 +27,17 @@
   a little more concise."
   (let [pkgs [...]]
     (packer.startup
-      (fn [use]
-        (for [i 1 (a.count pkgs) 2]
-          (let [name (. pkgs i)
-                opts (. pkgs (+ i 1))]
-            (-?> (. opts :mod) (safe-require-plugin-config))
-            (use (a.assoc opts 1 name)))))))
-
+      {1 (fn [use]
+           (for [i 1 (a.count pkgs) 2]
+             (let [name (. pkgs i)
+                   opts (. pkgs (+ i 1))]
+               (-?> (. opts :mod) (safe-require-plugin-config))
+               (use (a.assoc opts 1 name)))))
+       :config {:autoremove true
+                :display {:header_lines 2
+                          :title " packer.nvim"
+                          :open_fn (lambda open_fn [] 
+                                     (local {: float} (require :packer.util))
+                                     (float {:border :single}))}}}))
   nil)
+

@@ -39,8 +39,11 @@
 ;; Run script/sync.sh to update, install and clean your plugins.
 ;; Packer configuration format: https://github.com/wbthomason/packer.nvim
 (plugin.use
+  :wbthomason/packer.nvim {}
+                                     
   :Olical/aniseed {}
-  :Olical/conjure { :mod :conjure}
+  :Olical/conjure { :mod :conjure
+                    :branch :develop}
   :Olical/nvim-local-fennel {}
   :PeterRincker/vim-argumentative {}
   :airblade/vim-gitgutter {}
@@ -73,17 +76,20 @@
   :tpope/vim-commentary {}
   :tpope/vim-dispatch {}
   :tpope/vim-eunuch {}
-  :tpope/vim-fugitive {}
   :tpope/vim-repeat {}
   :tpope/vim-sexp-mappings-for-regular-people {}
   :tpope/vim-sleuth {}
   :tpope/vim-surround {}
   :tpope/vim-unimpaired {}
   :tpope/vim-vinegar {}
+  :TimUntersberger/neogit {:requires :nvim-lua/plenary.nvim
+                           :config (fn []
+                                     (let [neogit (require :neogit)]
+                                       (neogit.setup {})))}
   :w0rp/ale {:mod :ale}
-  :wbthomason/packer.nvim {}
   :janet-lang/janet.vim {}
   :eraserhd/parinfer-rust { :run "cargo build --release"}
+  :akinsho/toggleterm.nvim {}
   :luochen1990/rainbow {}
   :nvim-treesitter/nvim-treesitter {}
   :nvim-orgmode/orgmode {:mod :orgmode}
@@ -99,6 +105,8 @@
 ;;; Common config
 
 ;;;  TODO: separate the below into different files?
+
+
 ;;; Keymaps
 ;; easier command line mode
 (wk.register {";" [":" "vim-ex"]})
@@ -119,4 +127,7 @@
 (command! Scratch "new | setlocal bt=nofile bh=wipe nobl noswapfile")
 (command! SetScratch "edit [Scratch] | setlocal bt=nofile bh=wipe nobl noswapfile")
 
+;; terminal stuff. Should probably extract somewhere
+(let [toggleterm (require :toggleterm)]
+  (toggleterm.setup { :open_mapping "<C-t>"}))
 
