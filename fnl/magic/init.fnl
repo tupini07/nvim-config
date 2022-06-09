@@ -1,7 +1,8 @@
 (module magic.init
   {autoload {plugin magic.plugin
              nvim   aniseed.nvim
-             wk     which-key}
+             wk     which-key
+             themes  magic.themes}
    require-macros [magic.macros]})
 
 
@@ -63,9 +64,11 @@
                                  :hrsh7th/cmp-cmdline
                                  :hrsh7th/cmp-nvim-lsp]}
 
+  :marko-cerovac/material.nvim {}
+  :folke/tokyonight.nvim {}
+
   :lewis6991/impatient.nvim {}
   :liuchengxu/vim-better-default {:mod :better-default}
-  :marko-cerovac/material.nvim {:mod :material}
   :mbbill/undotree {:mod :undotree}
   :neovim/nvim-lspconfig {:mod :lspconfig}
   :nvim-lualine/lualine.nvim {:mod :lualine}
@@ -103,6 +106,9 @@
                                          (todo-comments.setup)))})
 
 ;;; Common config
+
+
+(themes.setup-theme :tokyonight)
 
 ;;;  TODO: separate the below into different files?
 
