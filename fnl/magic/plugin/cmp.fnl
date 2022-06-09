@@ -30,17 +30,14 @@
         :mapping {:<C-e> (mapping.abort)
                   :<C-n> (mapping (mapping.select_next_item {:behavior insert-behavior}) [:i :s])
                   :<C-p> (mapping (mapping.select_prev_item {:behavior insert-behavior}) [:i :s])
-                  :<C-Space> (mapping.confirm {:select true})
-                  :<Tab> (mapping (fn [fallback]
-                                    (if (visible)
-                                        (mapping.select_next_item {:behavior insert-behavior})
-                                        (has-words-before)
-                                        (vim.fn.feedkeys (replace-termcodes :<Tab>)
-                                                         :n)
-                                        (fallback)))
-                                  [:i :s :c])
-                   :<S-Tab> (mapping (fn [fallback]
-                                      (if (visible)
-                                          (mapping.select_prev_item {:behavior insert-behavior})
-                                          (fallback)))
-                                    [:i :s :c])}})
+                  :<A-Space> (mapping (fn [fallback]
+                                        (if (visible)
+                                            (mapping.select_next_item {:behavior insert-behavior})
+                                            (has-words-before)
+                                            (fallback)))
+                                      [:i :s :c])
+                  :<S-Tab> (mapping (fn [fallback]
+                                     (if (visible)
+                                         (mapping.select_prev_item {:behavior insert-behavior})
+                                         (fallback)))
+                                   [:i :s :c])}})
