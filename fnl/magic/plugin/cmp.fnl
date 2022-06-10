@@ -18,7 +18,7 @@
           ln (vim.fn.getline ".")]
         (or (= col 0) (string.match (string.sub ln col col) "%s"))))
 
-(setup { :sources [ {:name :conjure}]
+(setup {:sources [ {:name :conjure}]
         :experimental {:ghost_text true}
         :window {:documentation {:border :solid} :completion {:border :solid}}
         :sources [{:name :nvim_lsp}
