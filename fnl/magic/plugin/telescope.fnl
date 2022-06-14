@@ -13,6 +13,7 @@
                             "-g" "!.git/"]}})
 
     (telescope.load_extension :projects)
+    (telescope.load_extension :frecency)
 
     (wk.register { :f { :name "Folds/Files"
                         ;:i ["<cmd>e ~/.config/nvim/fnl/magic/init.fnl <cr><cmd>cd ~/.config/nvim/ <cr>"] 
@@ -23,6 +24,7 @@
     (util.lnnoremap :fs "w")
     (util.lnnoremap :fF "Telescope find_files hidden=true")
     (util.lnnoremap :ff "Telescope find_files hidden=false")
+    (util.lnnoremap :fr "Telescope frecency")
     (util.lnnoremap :f- "Telescope file_browser")
     (util.lnnoremap :fp "Telescope projects")
     (util.lnnoremap :fg "Telescope live_grep")

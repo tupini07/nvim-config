@@ -21,12 +21,7 @@ git clone git@github.com:tupini07/nvim-config.git ~/.config/nvim
 ~/.config/nvim/script/sync.sh
 ```
 
-Once that's done, start `nvim` qnormally. You now need to do some followup configuration
-
-```vim
-" setup tree-sitter org mode config
-:TSUpdate org
-```
+Once that's done, start `nvim` normally.
 
 ## Unlicenced
 

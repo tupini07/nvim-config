@@ -73,7 +73,9 @@
   :neovim/nvim-lspconfig {:mod :lspconfig}
   :nvim-lualine/lualine.nvim {:mod :lualine}
   :ahmedkhalf/project.nvim {:mod :project-nvim}
-  :nvim-telescope/telescope.nvim {:mod :telescope :requires [[:nvim-lua/popup.nvim] [:nvim-lua/plenary.nvim]]}
+  :nvim-telescope/telescope-frecency.nvim {:requires :tami5/sqlite.lua}
+  :nvim-telescope/telescope.nvim {:mod :telescope 
+                                  :requires [[:nvim-lua/popup.nvim] [:nvim-lua/plenary.nvim]]}
   :radenling/vim-dispatch-neovim {}
   :tpope/vim-abolish {}
   :tpope/vim-commentary {}
@@ -94,8 +96,10 @@
   :eraserhd/parinfer-rust { :run "cargo build --release"}
   :akinsho/toggleterm.nvim {}
   :luochen1990/rainbow {}
-  :nvim-treesitter/nvim-treesitter {}
-  :nvim-orgmode/orgmode {:mod :orgmode}
+  :matze/vim-move {}
+  :nvim-treesitter/nvim-treesitter {:mod :treesitter}
+  :nvim-neorg/neorg {:requires :nvim-lua/plenary.nvim
+                     :mod :neorg}
   :kyazdani42/nvim-web-devicons {}
   :kyazdani42/nvim-tree.lua { :mod :nvim-tree}
   :folke/trouble.nvim {:config (fn [] (let [trouble (require :trouble)] 
@@ -128,6 +132,11 @@
                    "[" ["<cmd>bprevious<cr>" "Previous buffer"]
                    "]" ["<cmd>bnext<cr>" "Next buffer"]}}
              { :prefix "<leader>"})
+
+;; TODO: how do we make this work so that it uses the appropriate formatter for the file type?
+(wk.register {:m {:name :Major
+                  :f ["<cmd>!jindt %<cr>" "Format current file"]}}
+             {:prefix :<leader>})
 
 ;;; Some custom commands
 (command! Scratch "new | setlocal bt=nofile bh=wipe nobl noswapfile")

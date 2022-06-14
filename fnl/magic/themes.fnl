@@ -15,7 +15,6 @@
                                     (set vim.g.tokyonight_sidebars [:qf :vista_kind :terminal :packer])
                                     (set vim.g.tokyonight_colors {:hint :orange
                                                                   :error "#ff0000"}))})
-
 (defn setup-theme [theme-name]
   (let [config-fn (?. theme-configs theme-name)]
     (when (= nil config-fn)
