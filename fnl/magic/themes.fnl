@@ -12,7 +12,7 @@
                       :tokyonight (fn []
                                     (set vim.g.tokyonight_style :storm)
                                     (set vim.g.tokyonight_italic_functions true)
-                                    (set vim.g.tokyonight_sidebars [:qf :vista_kind :terminal :packer])
+                                    (set vim.g.tokyonight_sidebars [:qf :vista_kind :terminal :packer :nvim-lsp-installer])
                                     (set vim.g.tokyonight_colors {:hint :orange
                                                                   :error "#ff0000"}))})
 (defn setup-theme [theme-name]

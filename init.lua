@@ -26,6 +26,10 @@ ensure("wbthomason", "packer.nvim")
 -- Aniseed compiles our Fennel code to Lua and loads it automatically.
 ensure("Olical", "aniseed")
 
+-- set our default scheme implementation to chicken scheme
+vim.g["conjure#client#scheme#stdio#command"] = "csi -quiet -:c"
+vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "\n-#;%d-> "
+
 -- Enable Aniseed's automatic compilation and loading of Fennel source code.
 -- Aniseed looks for this when it's loaded then loads the rest of your
 -- configuration if it's set.
