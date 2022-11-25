@@ -30,6 +30,7 @@
 
 (nvim.ex.set :spell)
 (nvim.ex.set :list)
+(nvim.ex.set :wrap :lbr)
 
 ;;; Mappings
 
@@ -99,6 +100,7 @@
   :luochen1990/rainbow {}
   :matze/vim-move {}
   :nvim-treesitter/nvim-treesitter {:mod :treesitter}
+  :nvim-treesitter/nvim-treesitter-refactor {}
   :nvim-neorg/neorg {:requires :nvim-lua/plenary.nvim
                      :mod :neorg}
   :kyazdani42/nvim-web-devicons {}
