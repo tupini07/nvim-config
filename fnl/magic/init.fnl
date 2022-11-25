@@ -46,6 +46,7 @@
   :Olical/conjure { :mod :conjure
                     :branch :develop}
   :Olical/nvim-local-fennel {}
+  :PaterJason/cmp-conjure {}
   :PeterRincker/vim-argumentative {}
   :airblade/vim-gitgutter {}
   :clojure-vim/clojure.vim {}
@@ -57,15 +58,15 @@
   :williamboman/nvim-lsp-installer {}
   :ray-x/lsp_signature.nvim {}
 
-  :hrsh7th/nvim-cmp { :mod :cmp
-                      :requires [:PaterJason/cmp-conjure
-                                 :hrsh7th/cmp-path
-                                 :hrsh7th/cmp-buffer
-                                 :hrsh7th/cmp-cmdline
-                                 :hrsh7th/cmp-nvim-lsp]}
-
   :marko-cerovac/material.nvim {}
   :folke/tokyonight.nvim {}
+
+  :hrsh7th/cmp-buffer {}
+  :hrsh7th/cmp-cmdline {}
+  :hrsh7th/cmp-nvim-lsp {}
+  :hrsh7th/cmp-path {}
+  :hrsh7th/nvim-cmp {:mod :cmp}
+  :jiangmiao/auto-pairs {:mod :auto-pairs}
 
   :lewis6991/impatient.nvim {}
   :liuchengxu/vim-better-default {:mod :better-default}
