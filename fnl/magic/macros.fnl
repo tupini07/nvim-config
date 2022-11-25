@@ -83,4 +83,15 @@
   (let [name (tostring name)
         desc (if (and (not ?desc) (or (fn? expr) (sym? expr))) (view expr)
                ?desc)]
-    `(vim.api.nvim_create_user_command ,name ,expr {:desc ,desc})))}
+    `(vim.api.nvim_create_user_command ,name ,expr {:desc ,desc})))
+
+ ;; Create an augroup for your autocmds.
+ ; (augroup my-group
+ ;   (nvim.ex.autocmd ...))
+ :augroup
+ (fn [name ...]
+   `(do
+      (vim.cmd (.. "augroup " ,(tostring name) "\nautocmd!"))
+      ,...
+      (vim.cmd "augroup END")
+      nil))}
