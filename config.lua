@@ -166,44 +166,34 @@ lvim.builtin.treesitter.highlight.enable = true
 -- Additional Plugins
 lvim.plugins = {
   {
-    "nvim-orgmode/orgmode",
+    "nvim-neorg/neorg",
+    ft = "norg",
+    after = "nvim-treesitter",
     config = function()
-      require('orgmode').setup_ts_grammar()
-
-      require('nvim-treesitter.configs').setup {
-        -- If TS highlights are not enabled at all, or disabled via `disable` prop,
-        -- highlighting will fallback to default Vim syntax highlighting
-        highlight = {
-          enable = true,
-          -- Required for spellcheck, some LaTex highlights and
-          -- code block highlights that do not have ts grammar
-          additional_vim_regex_highlighting = { 'org' },
+      require('neorg').setup {
+        load = {
+          ["core.defaults"] = {},       -- Loads default behaviour
+          ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.norg.completion"] = {
+            config = {
+              engine = "nvim-cmp",
+            },
+          },
+          ["core.norg.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                work = "~/org-files/Microsoft/",
+                personal = "~/org-files/Personal/",
+              },
+              default_workspace = "work",
+              open_last_workspace = true,
+            },
+          },
         },
-        ensure_installed = { 'org' }, -- Or run :TSUpdate org
       }
-
-      require('cmp').setup({
-        sources = {
-          { name = 'orgmode' }
-        }
-      })
-
-      require('orgmode').setup({
-        org_agenda_files = {
-          '~/org-files/Generic Todo.org',
-          '~/org-files/Home.org',
-          '~/org-files/TODOs.org',
-        },
-        org_default_notes_file = '~/org-files/notes.org',
-      })
-    end
-  },
-
-  {
-    "akinsho/org-bullets.nvim",
-    config = function()
-      require('org-bullets').setup()
-    end
+    end,
+    run = ":Neorg sync-parsers",
+    requires = "nvim-lua/plenary.nvim",
   }
 }
 -- lvim.plugins = {
