@@ -165,37 +165,12 @@ lvim.builtin.treesitter.highlight.enable = true
 
 -- Additional Plugins
 lvim.plugins = {
-  {
-    "nvim-neorg/neorg",
-    ft = "norg",
-    after = "nvim-treesitter",
-    config = function()
-      require('neorg').setup {
-        load = {
-          ["core.defaults"] = {},       -- Loads default behaviour
-          ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.norg.completion"] = {
-            config = {
-              engine = "nvim-cmp",
-            },
-          },
-          ["core.norg.dirman"] = { -- Manages Neorg workspaces
-            config = {
-              workspaces = {
-                work = "~/org-files/Microsoft/",
-                personal = "~/org-files/Personal/",
-              },
-              default_workspace = "work",
-              open_last_workspace = true,
-            },
-          },
-        },
-      }
-    end,
-    run = ":Neorg sync-parsers",
-    requires = "nvim-lua/plenary.nvim",
-  }
+  { "Olical/conjure" },
+  { "PaterJason/cmp-conjure" },
+  { "hylang/vim-hy" },
 }
+
+table.insert(lvim.builtin.cmp.sources, { name = "conjure" })
 -- lvim.plugins = {
 --     {
 --       "folke/trouble.nvim",
