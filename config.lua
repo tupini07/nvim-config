@@ -27,6 +27,18 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- override a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
 
+-- conjure keymaps in lsp
+lvim.builtin.which_key.mappings["l"]["c"] = {
+  name = "Conjure",
+  e = {
+    name = "Evaluate",
+    r = { "<cmd>ConjureEvalRootForm<cr>", "Eval Root form" },
+    c = { "<cmd>ConjureEvalCurrentForm<cr>", "Eval Current form" },
+    b = { "<cmd>ConjureEvalBuf<cr>", "Eval buffer" },
+    w = { "<cmd>ConjureEvalWord<cr>", "Eval word" },
+  }
+}
+
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
 -- local _, actions = pcall(require, "telescope.actions")
@@ -165,9 +177,11 @@ lvim.builtin.treesitter.highlight.enable = true
 
 -- Additional Plugins
 lvim.plugins = {
+  { "janet-lang/janet.vim" },
   { "Olical/conjure" },
   { "PaterJason/cmp-conjure" },
   { "hylang/vim-hy" },
+  { "gpanders/nvim-parinfer" },
 }
 
 table.insert(lvim.builtin.cmp.sources, { name = "conjure" })
